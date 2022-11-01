@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: rgb(17, 17, 17);
+  -webkit-font-smoothing: antialiased;
+}
+
+*::selection {
+  background-color: rgb(228, 58, 222);
+}
+
+*::-webkit-calendar-picker-indicator {
+ background-color: white;
+ border-radius: 3px;
+}
+
+*::-webkit-calendar-picker-indicator:hover {
+  cursor: pointer
+ }

@@ -16,47 +16,51 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="mx-auto w-7/12 flex-col items-center p-5">
-        <div className="flex w-full flex-row gap-2">
-          <div className="flex h-10 w-full items-center gap-3 rounded-md border border-border-primary bg-black pl-4 text-sm text-white">
-            <AiOutlineSearch className="h-4 w-4 text-gray-400" />
-            <input className="w-full bg-black" placeholder="Search..." />
-          </div>
-          <Link
-            href="/create"
-            className="flex w-fit items-center whitespace-nowrap rounded-md bg-white px-4 text-sm text-black"
-          >
-            Create new
-          </Link>
-        </div>
-        <div className="mt-4 flex flex-col gap-4">
-          {data?.map((balance) => (
+      <div className="flex w-full items-center">
+        <main className="mx-auto flex-col items-center p-5">
+          <div className="flex w-full flex-row gap-2">
+            <div className="flex h-10 w-full items-center gap-3 rounded-md border border-border-primary bg-black pl-4 text-sm text-white">
+              <AiOutlineSearch className="h-4 w-4 text-gray-400" />
+              <input className="w-full bg-black" placeholder="Search..." />
+            </div>
             <Link
-              href={`/balance/${balance.id}`}
-              key={balance.id}
-              className="flex overflow-hidden flex-row items-center justify-between gap-10 rounded-md border border-border-primary bg-black p-4 text-white transition-all hover:scale-105"
+              href="/create"
+              className="flex w-fit items-center whitespace-nowrap rounded-md bg-white px-4 text-sm text-black"
             >
-              <div className="flex flex-row gap-10">
-                <div className="flex flex-col gap-px">
-                  <div className="text-sm text-gray-400">Name</div>
-                  <div className="text-lg">{balance.name}</div>
-                </div>
-                <div className="flex flex-col gap-px">
-                  <div className="text-sm text-gray-400">Description</div>
-                  <div className="text-md">{balance.description}</div>
-                </div>
-                <div className="flex flex-col gap-px">
-                  <div className="text-sm text-gray-400">Purpose</div>
-                  <div className="text-md">{balance.purpose}</div>
-                </div>
-              </div>
-              <div className="relative">
-                <span className="text-3xl font-bold text-text-secondary absolute right-0 -top-2 opacity-30">{format(balance.date, "dd/MM/yyyy")}</span>
-              </div>
+              Create new
             </Link>
-          ))}
-        </div>
-      </main>
+          </div>
+          <div className="mt-4 flex flex-col gap-4">
+            {data?.map((balance) => (
+              <Link
+                href={`/balance/${balance.id}`}
+                key={balance.id}
+                className="flex flex-row items-center justify-between gap-10 overflow-hidden rounded-md border border-border-primary bg-black p-4 text-white transition-all hover:scale-105"
+              >
+                <div className="flex w-full shrink flex-row gap-3 md:w-[845px] md:gap-10">
+                  <div className="flex flex-col gap-px">
+                    <div className="text-sm text-gray-400">Name</div>
+                    <div className="text-lg">{balance.name}</div>
+                  </div>
+                  <div className="flex flex-col gap-px">
+                    <div className="text-sm text-gray-400">Description</div>
+                    <div className="text-md">{balance.description}</div>
+                  </div>
+                  <div className="flex flex-col gap-px">
+                    <div className="text-sm text-gray-400">Purpose</div>
+                    <div className="text-md">{balance.purpose}</div>
+                  </div>
+                </div>
+                <div className="relative">
+                  <span className="absolute right-0 -top-2 text-3xl font-bold text-text-secondary opacity-30">
+                    {format(balance.date, "dd/MM/yyyy")}
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </main>
+      </div>
     </>
   );
 };

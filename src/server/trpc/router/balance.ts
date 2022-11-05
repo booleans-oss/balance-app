@@ -59,6 +59,7 @@ export const balanceRouter = router({
             },
           },
         });
+        console.log(result)
         return result;
       } catch (e) {
         console.log(e);

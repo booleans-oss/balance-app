@@ -700,11 +700,11 @@ function CreateRecordingModal({
                               },
                             ]);
                           }}
-                          className="h-5 w-5 text-white"
+                          className="h-5 w-5 text-white cursor-pointer"
                         />
                       </div>
                       <div ref={parent} className="flex flex-col gap-6">
-                        {transactions.map((transaction, index) => (
+                        {transactions.map((_, index) => (
                           <div
                             key={index}
                             className="flex flex-row justify-between"

@@ -12,10 +12,10 @@ body {
 }
 
 *::-webkit-calendar-picker-indicator {
- background-color: white;
- border-radius: 3px;
+  background-color: white;
+  border-radius: 3px;
 }
 
 *::-webkit-calendar-picker-indicator:hover {
-  cursor: pointer
- }
+  cursor: pointer;
+}

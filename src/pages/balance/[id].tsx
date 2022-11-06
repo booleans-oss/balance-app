@@ -1,6 +1,8 @@
 import {
-    createColumnHelper, flexRender, getCoreRowModel,
-    useReactTable
+  createColumnHelper,
+  flexRender,
+  getCoreRowModel,
+  useReactTable
 } from "@tanstack/react-table";
 import clsx from "clsx";
 import { format } from "date-fns";
@@ -12,6 +14,7 @@ import { AiFillCheckCircle, AiOutlineCheckCircle } from "react-icons/ai";
 import { IoMdArrowBack } from "react-icons/io";
 import classes from "../../data/classes.json";
 import { trpc } from "../../utils/trpc";
+
 const allClasses = classes;
 
 type BalanceRecording = {
@@ -270,7 +273,7 @@ export default function BalanceDetails() {
               </p>
             </div>
           </div>
-          <div className="divide-x-border-primary relative md:sticky top-0 z-10 mt-[70px] flex w-full flex-col md:flex-row items-center justify-items-center divide-x rounded-t-md border border-border-primary bg-black text-sm text-border-primary text-text-secondary">
+          <div className="divide-x-border-primary relative top-0 z-10 mt-[70px] flex w-full flex-col items-center justify-items-center divide-x rounded-t-md border border-border-primary bg-black text-sm text-border-primary text-text-secondary md:sticky md:flex-row">
             {tabs.map((tab, index) => (
               <div
                 key={index}
@@ -379,9 +382,9 @@ export default function BalanceDetails() {
                   recording.
                 </span>
               </div>
-              <div className="p-6">
-                {flatRecordings?.length && (
-                  <table className=" w-full bg-bg-primary px-6">
+              <div className={"w-[calc(100vw-40px)] overflow-x-scroll p-6 md:w-full"}>
+                {flatAccounts?.length && (
+                  <table className="w-full bg-bg-primary px-6">
                     <thead className="bg-black">
                       {recordingsTable.getHeaderGroups().map((headerGroup) => (
                         <tr key={headerGroup.id}>
@@ -485,9 +488,9 @@ export default function BalanceDetails() {
                   See every accounts&apos; balance in an organized table.
                 </span>
               </div>
-              <div className="p-6">
-                {flatRecordings?.length && (
-                  <table className=" w-full bg-black px-6">
+              <div className={"w-[calc(100vw-40px)] overflow-x-scroll p-6 md:w-full"}>
+                {flatAccounts?.length && (
+                  <table className="w-full px-6">
                     <thead className="bg-bg-primary">
                       {accountingBalanceTable
                         .getHeaderGroups()
@@ -582,9 +585,9 @@ export default function BalanceDetails() {
                 </span>
               </div>
               <div className="w-full p-6">
-                {flatAccounts?.length && (
-                  <div className="flex flex-col md:flex-row bg-bg-primary">
-                    <div className="flex w-full md:w-1/2 flex-col rounded-l-md border border-border-primary">
+                {flatRecordings?.length && (
+                  <div className="flex flex-col bg-bg-primary md:flex-row">
+                    <div className="flex w-full flex-col rounded-l-md border border-border-primary md:w-1/2">
                       <div className="border-b border-border-primary bg-black p-4 text-center text-lg font-bold uppercase">
                         Expenses
                       </div>
@@ -610,7 +613,7 @@ export default function BalanceDetails() {
                         </div>
                       </div>
                     </div>
-                    <div className="flex w-full md:w-1/2 flex-col rounded-r-md border border-border-primary">
+                    <div className="flex w-full flex-col rounded-r-md border border-border-primary md:w-1/2">
                       <div className="border-b border-border-primary bg-black p-4 text-center text-lg font-bold uppercase">
                         Income
                       </div>
@@ -653,8 +656,8 @@ export default function BalanceDetails() {
               <div className="w-full p-6">
                 {flatAccounts?.length && (
                   <>
-                    <div className="flex w-full flex-col md:flex-row bg-bg-primary">
-                      <div className="flex w-full md:w-1/2 flex-col rounded-l-md border border-border-primary">
+                    <div className="flex w-full flex-col bg-bg-primary md:flex-row">
+                      <div className="flex w-full flex-col rounded-l-md border border-border-primary md:w-1/2">
                         <div className="border-b border-border-primary bg-black p-4 text-center text-lg font-bold uppercase">
                           Assets
                         </div>
@@ -703,7 +706,7 @@ export default function BalanceDetails() {
                           </div>
                         </div>
                       </div>
-                      <div className="flex w-full md:w-1/2 flex-col rounded-r-md border border-border-primary">
+                      <div className="flex w-full flex-col rounded-r-md border border-border-primary md:w-1/2">
                         <div className="border-b border-border-primary bg-black p-4 text-center text-lg font-bold uppercase">
                           Liabilities
                         </div>
@@ -762,8 +765,8 @@ export default function BalanceDetails() {
                         </div>
                       </div>
                     </div>
-                    <div className="bg-primary flex flex-row w-full">
-                      <div className="flex w-full md:w-1/2 flex-row justify-between rounded-b-md border border-border-primary p-5">
+                    <div className="bg-primary flex w-full flex-row">
+                      <div className="flex w-full flex-row justify-between rounded-b-md border border-border-primary p-5 md:w-1/2">
                         <span className="text-md font-bold uppercase">
                           Total
                         </span>
@@ -784,7 +787,7 @@ export default function BalanceDetails() {
                             )
                             .reduce((a, b) => a + b, 0)}
                       </div>
-                      <div className="hidden w-full md:flex md:w-1/2 flex-row justify-between rounded-b-md border border-border-primary p-5">
+                      <div className="hidden w-full flex-row justify-between rounded-b-md border border-border-primary p-5 md:flex md:w-1/2">
                         <span className="text-md font-bold uppercase">
                           Total
                         </span>

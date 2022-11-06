@@ -17,8 +17,13 @@ import { BiLinkExternal } from "react-icons/bi";
 import { IoMdAdd, IoMdArrowBack, IoMdTrash } from "react-icons/io";
 import { MdBookmark } from "react-icons/md";
 import classes from "../data/classes.json";
-import { RecordingColors} from "../types";
-import type { Recording, RecordingType, Transaction, TransactionType } from "../types";
+import type {
+  Recording,
+  RecordingType,
+  Transaction,
+  TransactionType
+} from "../types";
+import { RecordingColors } from "../types";
 import { trpc } from "../utils/trpc";
 
 const allClasses = classes;
@@ -33,8 +38,6 @@ const categorizedClasses = Object.entries(classes).reduce(
   },
   {} as Record<string, Array<{ value: string; key: string }>>
 );
-
-
 
 const columnHelper = createColumnHelper<Recording>();
 
@@ -120,12 +123,12 @@ export default function CreatePage() {
 
   const parent = useRef(null);
 
-  const createBalance = trpc.balance.create.useMutation();
+  const { isLoading, mutateAsync } = trpc.balance.create.useMutation();
 
   const router = useRouter();
 
   const handleSubmit = async () => {
-    const data = await createBalance.mutateAsync({
+    const data = await mutateAsync({
       generalInfo,
       recordings,
     });
@@ -559,7 +562,7 @@ export default function CreatePage() {
                 </div>
                 <div className="flex w-full justify-end">
                   <button
-                    disabled={!steps[0] || !steps[1] || !isChecked}
+                    disabled={!steps[0] || !steps[1] || !isChecked || isLoading}
                     type="button"
                     className={clsx(
                       "inline-flex w-fit rounded-md border border-transparent bg-white px-4 py-2 text-base font-medium text-black shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm",
@@ -567,7 +570,14 @@ export default function CreatePage() {
                     )}
                     onClick={handleSubmit}
                   >
-                    Finish
+                    {isLoading ? (
+                      <div className="flex flex-row items-center gap-2">
+                          <div className="h-5 w-5 animate-spin rounded-full border-b-2 border-gray-500"/>
+                        <p>Creating balance...</p>
+                      </div>
+                    ) : (
+                      <>Finish</>
+                    )}
                   </button>
                 </div>
               </div>
@@ -700,7 +710,7 @@ function CreateRecordingModal({
                               },
                             ]);
                           }}
-                          className="h-5 w-5 text-white cursor-pointer"
+                          className="h-5 w-5 cursor-pointer text-white"
                         />
                       </div>
                       <div ref={parent} className="flex flex-col gap-6">

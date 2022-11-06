@@ -227,7 +227,7 @@ export default function BalanceDetails() {
         tabs.indexOf(activeTab) - 1 > 0 ? tabs.indexOf(activeTab) - 1 : 0
       );
     }
-  }, [tabs]);
+  }, [isScrolling, tabs]);
 
   const flatRecordings = useMemo(() => {
     return data?.recordings.flatMap((recording) =>

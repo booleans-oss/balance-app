@@ -24,6 +24,7 @@ import type {
   TransactionType
 } from "../types";
 import { RecordingColors } from "../types";
+import formatAccount from "../utils/formatAccount";
 import { trpc } from "../utils/trpc";
 
 const allClasses = classes;
@@ -94,7 +95,7 @@ export default function CreatePage() {
             key={index}
             className="group relative mx-1 inline-block w-fit cursor-pointer border-b border-gray-400 text-center"
           >
-            {transaction.accountNumber}
+            {formatAccount(transaction.accountNumber)}
             <div className="pointer-events-none absolute bottom-full -left-1/2 z-10 w-fit rounded-lg bg-black py-2 px-3 text-center text-xs text-white opacity-0 group-hover:opacity-100">
               {allClasses[transaction.accountNumber as keyof typeof allClasses]}
             </div>
@@ -450,9 +451,9 @@ export default function CreatePage() {
                                 {header.isPlaceholder
                                   ? null
                                   : flexRender(
-                                      header.column.columnDef.header,
-                                      header.getContext()
-                                    )}
+                                    header.column.columnDef.header,
+                                    header.getContext()
+                                  )}
                               </th>
                             ))}
                           </tr>
@@ -572,7 +573,7 @@ export default function CreatePage() {
                   >
                     {isLoading ? (
                       <div className="flex flex-row items-center gap-2">
-                          <div className="h-5 w-5 animate-spin rounded-full border-b-2 border-gray-500"/>
+                        <div className="h-5 w-5 animate-spin rounded-full border-b-2 border-gray-500" />
                         <p>Creating balance...</p>
                       </div>
                     ) : (
@@ -767,15 +768,14 @@ function CreateRecordingModal({
                                     ([groupKey, value]) => (
                                       <optgroup
                                         key={groupKey}
-                                        label={`${groupKey} - ${
-                                          allClasses[
-                                            `CLASS ${groupKey}` as keyof typeof allClasses
-                                          ]
-                                        }`}
+                                        label={`${groupKey} - ${allClasses[
+                                          `CLASS ${groupKey}` as keyof typeof allClasses
+                                        ]
+                                          }`}
                                       >
                                         {value.map(({ key, value }) => (
                                           <option key={key} value={key}>
-                                            {key} - {value}
+                                            {formatAccount(key)} - {value}
                                           </option>
                                         ))}
                                       </optgroup>

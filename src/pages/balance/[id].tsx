@@ -14,6 +14,7 @@ import { AiFillCheckCircle, AiOutlineCheckCircle } from "react-icons/ai";
 import { IoMdArrowBack } from "react-icons/io";
 import { useIntersection } from "react-use";
 import classes from "../../data/classes.json";
+import formatAccount from "../../utils/formatAccount";
 import { trpc } from "../../utils/trpc";
 
 const allClasses = classes;
@@ -41,7 +42,7 @@ const AccountingBalanceColumnHelper =
 const recordingColumns = [
   BalanceRecordingColumnHelper.accessor("accountNumber", {
     id: "accountNumber",
-    cell: (info) => <i>{info.getValue()}</i>,
+    cell: (info) => <i>{formatAccount(info.getValue())}</i>,
     header: () => <div className="rounded-sm px-2 text-white">Account</div>,
   }),
   BalanceRecordingColumnHelper.accessor("date", {
@@ -85,7 +86,7 @@ const recordingColumns = [
 const accountingBalanceColumns = [
   AccountingBalanceColumnHelper.accessor("accountNumber", {
     id: "accountNumber",
-    cell: (info) => <i>{info.getValue()}</i>,
+    cell: (info) => <i>{formatAccount(info.getValue())}</i>,
     header: () => (
       <div className="rounded-l-md border-y border-l border-border-primary bg-bg-primary px-4 py-2 text-white">
         Account
@@ -536,7 +537,7 @@ export default function BalanceDetails() {
                               accountName={
                                 allClasses[item as keyof typeof allClasses]
                               }
-                              accountNumber={parseInt(item)}
+                              accountNumber={formatAccount(parseInt(item))}
                               transactions={flatRecordings.filter(
                                 (transaction) =>
                                   transaction.accountNumber === item
@@ -680,7 +681,7 @@ export default function BalanceDetails() {
                                     className="flex flex-row justify-between"
                                   >
                                     <span>
-                                      {account.accountNumber}.{" "}
+                                      {formatAccount(account.accountNumber)}.{" "}
                                       {account.accountName}
                                     </span>
                                     {Math.abs(account.debit - account.credit)}
@@ -707,7 +708,7 @@ export default function BalanceDetails() {
                                     className="flex flex-row justify-between"
                                   >
                                     <span>
-                                      {account.accountNumber}.{" "}
+                                      {formatAccount(account.accountNumber)}.{" "}
                                       {account.accountName}
                                     </span>
                                     {Math.abs(account.debit - account.credit)}
@@ -756,7 +757,7 @@ export default function BalanceDetails() {
                                         className="flex flex-row justify-between"
                                       >
                                         <span>
-                                          {account.accountNumber}.{" "}
+                                          {formatAccount(account.accountNumber)}.{" "}
                                           {account.accountName}
                                         </span>
                                         {Math.abs(
@@ -779,7 +780,7 @@ export default function BalanceDetails() {
                                         className="flex flex-row justify-between"
                                       >
                                         <span>
-                                          {account.accountNumber}.{" "}
+                                          {formatAccount(account.accountNumber)}.{" "}
                                           {account.accountName}
                                         </span>
                                         {Math.abs(
@@ -811,7 +812,7 @@ export default function BalanceDetails() {
                                         className="flex flex-row justify-between"
                                       >
                                         <span>
-                                          {account.accountNumber}.{" "}
+                                          {formatAccount(account.accountNumber)}.{" "}
                                           {account.accountName}
                                         </span>
                                         {Math.abs(
@@ -848,7 +849,7 @@ export default function BalanceDetails() {
                                         className="flex flex-row justify-between"
                                       >
                                         <span>
-                                          {account.accountNumber}.{" "}
+                                          {formatAccount(account.accountNumber)}.{" "}
                                           {account.accountName}
                                         </span>
                                         {Math.abs(

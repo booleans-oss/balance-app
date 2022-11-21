@@ -1,13 +1,12 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-generator client {
-  provider = "prisma-client-js"
+generator js {
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
 }
 
 datasource db {
-  provider = "postgres"
-  url      = env("DATABASE_URL")
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
 }
 
 model Balance {
@@ -17,6 +16,8 @@ model Balance {
   description String
   purpose     String
   recordings  Recording[]
+
+  @@index([id])
 }
 
 model Transaction {
@@ -26,6 +27,8 @@ model Transaction {
   accountNumber String
   Recording     Recording @relation(fields: [recordingId], references: [id])
   recordingId   String
+
+  @@index([recordingId])
 }
 
 model Recording {
@@ -35,4 +38,6 @@ model Recording {
   transactions Transaction[]
   Balance      Balance       @relation(fields: [balanceId], references: [id])
   balanceId    Int
+
+  @@index([balanceId])
 }

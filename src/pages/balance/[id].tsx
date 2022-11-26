@@ -781,8 +781,10 @@ export default function BalanceDetails() {
                                     Current Assets
                                   </span>
                                   {flatAccounts
-                                    .filter((account) =>
-                                      account.accountNumber.startsWith("5")
+                                    .filter(
+                                      (account) =>
+                                        account.accountNumber.startsWith("5") ||
+                                        account.accountNumber.startsWith("41")
                                     )
                                     .map((account) => (
                                       <div
@@ -845,12 +847,9 @@ export default function BalanceDetails() {
                                   {flatAccounts
                                     .filter(
                                       (account) =>
-                                        ((account.accountNumber.startsWith(
+                                        (account.accountNumber.startsWith(
                                           "4"
-                                        ) &&
-                                          !account.accountNumber.startsWith(
-                                            "445"
-                                          )) ||
+                                        ) ||
                                           account.accountNumber.startsWith(
                                             "16"
                                           )) &&
@@ -888,8 +887,10 @@ export default function BalanceDetails() {
                                 )
                                 .reduce((a, b) => a + b, 0) +
                                 flatAccounts
-                                  .filter((account) =>
-                                    account.accountNumber.startsWith("5")
+                                  .filter(
+                                    (account) =>
+                                      account.accountNumber.startsWith("5") ||
+                                      account.accountNumber.startsWith("41")
                                   )
                                   .map((account) =>
                                     Math.abs(account.debit - account.credit)
@@ -912,9 +913,6 @@ export default function BalanceDetails() {
                                   .filter(
                                     (account) =>
                                       account.accountNumber.startsWith("4") &&
-                                      !account.accountNumber.startsWith(
-                                        "445"
-                                      ) &&
                                       account.credit > account.debit
                                   )
                                   .map((account) =>

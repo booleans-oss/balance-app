@@ -2,7 +2,7 @@ import {
   createColumnHelper,
   flexRender,
   getCoreRowModel,
-  useReactTable
+  useReactTable,
 } from "@tanstack/react-table";
 import clsx from "clsx";
 import { format } from "date-fns";
@@ -293,6 +293,13 @@ export default function BalanceDetails() {
       .filter((account) => account.accountNumber.startsWith("6"))
       .map((account) => Math.abs(account.debit - account.credit))
       .reduce((a, b) => a + b, 0);
+
+  console.log(
+    flatAccounts
+      .filter((account) => account.debit < account.credit)
+      .map((acount) => Math.abs(acount.debit - acount.credit))
+      .reduce((a, b) => a + b, 0)
+  );
 
   return (
     <>
@@ -621,7 +628,7 @@ export default function BalanceDetails() {
                                   {flatAccounts
                                     .filter(
                                       (account) =>
-                                        account.debit >= account.credit
+                                        account.debit > account.credit
                                     )
                                     .map((acount) =>
                                       Math.abs(acount.debit - acount.credit)
@@ -634,9 +641,12 @@ export default function BalanceDetails() {
                                   {flatAccounts
                                     .filter(
                                       (account) =>
-                                        account.debit <= account.credit
+                                        account.debit < account.credit
                                     )
-                                    .reduce((a, b) => a + b.credit, 0)}
+                                    .map((acount) =>
+                                      Math.abs(acount.debit - acount.credit)
+                                    )
+                                    .reduce((a, b) => a + b, 0)}
                                 </span>
                               </td>
                             </tr>
@@ -757,8 +767,8 @@ export default function BalanceDetails() {
                                         className="flex flex-row justify-between"
                                       >
                                         <span>
-                                          {formatAccount(account.accountNumber)}.{" "}
-                                          {account.accountName}
+                                          {formatAccount(account.accountNumber)}
+                                          . {account.accountName}
                                         </span>
                                         {Math.abs(
                                           account.debit - account.credit
@@ -780,8 +790,8 @@ export default function BalanceDetails() {
                                         className="flex flex-row justify-between"
                                       >
                                         <span>
-                                          {formatAccount(account.accountNumber)}.{" "}
-                                          {account.accountName}
+                                          {formatAccount(account.accountNumber)}
+                                          . {account.accountName}
                                         </span>
                                         {Math.abs(
                                           account.debit - account.credit
@@ -812,8 +822,8 @@ export default function BalanceDetails() {
                                         className="flex flex-row justify-between"
                                       >
                                         <span>
-                                          {formatAccount(account.accountNumber)}.{" "}
-                                          {account.accountName}
+                                          {formatAccount(account.accountNumber)}
+                                          . {account.accountName}
                                         </span>
                                         {Math.abs(
                                           account.debit - account.credit
@@ -835,9 +845,12 @@ export default function BalanceDetails() {
                                   {flatAccounts
                                     .filter(
                                       (account) =>
-                                        (account.accountNumber.startsWith(
+                                        ((account.accountNumber.startsWith(
                                           "4"
-                                        ) ||
+                                        ) &&
+                                          !account.accountNumber.startsWith(
+                                            "445"
+                                          )) ||
                                           account.accountNumber.startsWith(
                                             "16"
                                           )) &&
@@ -849,8 +862,8 @@ export default function BalanceDetails() {
                                         className="flex flex-row justify-between"
                                       >
                                         <span>
-                                          {formatAccount(account.accountNumber)}.{" "}
-                                          {account.accountName}
+                                          {formatAccount(account.accountNumber)}
+                                          . {account.accountName}
                                         </span>
                                         {Math.abs(
                                           account.debit - account.credit
@@ -899,6 +912,9 @@ export default function BalanceDetails() {
                                   .filter(
                                     (account) =>
                                       account.accountNumber.startsWith("4") &&
+                                      !account.accountNumber.startsWith(
+                                        "445"
+                                      ) &&
                                       account.credit > account.debit
                                   )
                                   .map((account) =>
@@ -934,16 +950,18 @@ function LedgerTable({
 }: LedgerTableProps) {
   const maxDebit = Math.max(
     0,
-    ...transactions
+    transactions
       .filter((item) => item.type === "DEBIT")
       .map((item) => item.amount)
+      .reduce((a, b) => a + b, 0)
   );
 
   const maxCredit = Math.max(
     0,
-    ...transactions
+    transactions
       .filter((item) => item.type === "CREDIT")
       .map((item) => item.amount)
+      .reduce((a, b) => a + b, 0)
   );
 
   const difference = Math.abs(maxDebit - maxCredit);

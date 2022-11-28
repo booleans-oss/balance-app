@@ -787,7 +787,6 @@ export default function BalanceDetails() {
                                         account.accountNumber.startsWith(
                                           "41"
                                         ) ||
-                                        account.accountNumber.startsWith("2") ||
                                         account.accountNumber.startsWith("4456")
                                     )
                                     .map((account) => (

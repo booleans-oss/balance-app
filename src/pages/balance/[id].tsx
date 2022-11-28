@@ -784,7 +784,11 @@ export default function BalanceDetails() {
                                     .filter(
                                       (account) =>
                                         account.accountNumber.startsWith("5") ||
-                                        account.accountNumber.startsWith("41")
+                                        account.accountNumber.startsWith(
+                                          "41"
+                                        ) ||
+                                        account.accountNumber.startsWith("2") ||
+                                        account.accountNumber.startsWith("4456")
                                     )
                                     .map((account) => (
                                       <div
@@ -879,8 +883,10 @@ export default function BalanceDetails() {
                                 Total
                               </span>
                               {flatAccounts
-                                .filter((account) =>
-                                  account.accountNumber.startsWith("2")
+                                .filter(
+                                  (account) =>
+                                    account.accountNumber.startsWith("2") ||
+                                    account.accountNumber.startsWith("4456")
                                 )
                                 .map((account) =>
                                   Math.abs(account.debit - account.credit)

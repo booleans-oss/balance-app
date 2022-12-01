@@ -784,6 +784,7 @@ export default function BalanceDetails() {
                                     .filter(
                                       (account) =>
                                         account.accountNumber.startsWith("5") ||
+                                        account.accountNumber.startsWith("3") ||
                                         account.accountNumber.startsWith(
                                           "41"
                                         ) ||
@@ -895,6 +896,7 @@ export default function BalanceDetails() {
                                   .filter(
                                     (account) =>
                                       account.accountNumber.startsWith("5") ||
+                                      account.accountNumber.startsWith("3") ||
                                       account.accountNumber.startsWith("41")
                                   )
                                   .map((account) =>

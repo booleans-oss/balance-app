@@ -69,7 +69,7 @@ export const balanceRouter = router({
   getAll: publicProcedure.query(({ ctx }) => {
     return ctx.prisma.balance.findMany({
       orderBy: {
-        date: "asc",
+        date: "desc",
       }
     })
   }),

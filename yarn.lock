@@ -282,10 +282,10 @@
     date-fns "^2.0.1"
     react-popper "^2.2.5"
 
-"@types/react-dom@18.0.5":
-  version "18.0.5"
-  resolved "https://registry.npmjs.org/@types/react-dom/-/react-dom-18.0.5.tgz"
-  integrity sha512-OWPWTUrY/NIrjsAPkAk1wW9LZeIjSvkXRhclsFO8CZcZGCOg2G0YZy4ft+rOyYxy8B7ui5iZzi9OkDebZ7/QSA==
+"@types/react-dom@18.2.22":
+  version "18.2.22"
+  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.2.22.tgz#d332febf0815403de6da8a97e5fe282cbe609bae"
+  integrity sha512-fHkBXPeNtfvri6gdsMYyW+dW7RXFo6Ad09nLFK0VQWR7yGLai/Cyvyj696gbwYvBnhGtevUG9cET0pmUbMtoPQ==
   dependencies:
     "@types/react" "*"
 
@@ -305,13 +305,12 @@
     "@types/scheduler" "*"
     csstype "^3.0.2"
 
-"@types/react@18.0.14":
-  version "18.0.14"
-  resolved "https://registry.npmjs.org/@types/react/-/react-18.0.14.tgz"
-  integrity sha512-x4gGuASSiWmo0xjDLpm5mPb52syZHJx02VKbqUKdLmKtAwIh63XClGsiTI1K6DO5q7ox4xAsQrU+Gl3+gGXF9Q==
+"@types/react@18.2.73":
+  version "18.2.73"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.73.tgz#0579548ad122660d99e00499d22e33b81e73ed94"
+  integrity sha512-XcGdod0Jjv84HOC7N5ziY3x+qL0AfmubvKOZ9hJjJ2yd5EE+KYjWhdOjt387e9HPheHkdggF9atTifMRtyAaRA==
   dependencies:
     "@types/prop-types" "*"
-    "@types/scheduler" "*"
     csstype "^3.0.2"
 
 "@types/scheduler@*":

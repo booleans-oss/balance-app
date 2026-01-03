@@ -225,27 +225,25 @@
   resolved "https://registry.yarnpkg.com/@tanstack/table-core/-/table-core-8.5.21.tgz#374911075adec084274ede947a38cd1becb57384"
   integrity sha512-e5hDtr3OxP6lOOieMbYnUwvQbavACYvqIArGY0WIF0W7jAjeIkvjgC7lxRyKoW8hJrPC5GCKHW5RjoNel+IeGA==
 
-"@trpc/client@10.0.0-rc.0":
-  version "10.0.0-rc.0"
-  resolved "https://registry.npmjs.org/@trpc/client/-/client-10.0.0-rc.0.tgz"
-  integrity sha512-JqOE1GRwao1mp3UtY2AVB8iIMMryRMSwAJWZ/wMCI0UCuQn+Px6OSQx5OLvs9Yh8DR6QLJmvDOrx6/OT3fG/iQ==
+"@trpc/client@10.45.4":
+  version "10.45.4"
+  resolved "https://registry.yarnpkg.com/@trpc/client/-/client-10.45.4.tgz#7f3e0b0deda3c7dd76bc34822a594d1931ecfd58"
+  integrity sha512-ItpH5FMIJFt862kbAgC8hf5NJnDLo0FwEvMEX6zSLCenzWD0UH6H/fvAX1suFo1e0wcAmMhiEU1Tl6xKk/Pd1g==
 
-"@trpc/next@10.0.0-rc.0":
-  version "10.0.0-rc.0"
-  resolved "https://registry.npmjs.org/@trpc/next/-/next-10.0.0-rc.0.tgz"
-  integrity sha512-olZwWzNCSumvqmv8I1iDuaLLX5Bvo/DRW0H9tsfzaVTtEVYooWx+x2xEGZEFmlTzOPZ0/s4ZBFaM8I/WMQY3aA==
-  dependencies:
-    react-ssr-prepass "^1.5.0"
+"@trpc/next@10.45.4":
+  version "10.45.4"
+  resolved "https://registry.yarnpkg.com/@trpc/next/-/next-10.45.4.tgz#20fd9e32cecb1f4b84bbbdefa210736acf90ecbd"
+  integrity sha512-lsuFpZFIf4iFo71fWLS0F5s33fZrvvbblbXffFJBQw20wTQP5fZuZ6hXRbCgiUD+dLsZP1wDMKhky3mqZ5dKgA==
 
-"@trpc/react-query@10.0.0-rc.0":
-  version "10.0.0-rc.0"
-  resolved "https://registry.npmjs.org/@trpc/react-query/-/react-query-10.0.0-rc.0.tgz"
-  integrity sha512-FCCz0gfY+GUMZUOGsSV2Q4rP3KU2E43amxYo3g4pdG8d10hDrgZPruzRGyGNCL3oYjj7oDUoe+DcoDY+qOPwgg==
+"@trpc/react-query@10.45.4":
+  version "10.45.4"
+  resolved "https://registry.yarnpkg.com/@trpc/react-query/-/react-query-10.45.4.tgz#6677f0e6aa812f09438d200d805a1b0eb31b2abe"
+  integrity sha512-/JfbkFMztsYbpl94P9TWritMjbHqWxeHz4uwjHM3W2zUcIKT88FiFXVmD/jLitPLrKhi4yAONoaRks5SUm12fQ==
 
-"@trpc/server@10.0.0-rc.0":
-  version "10.0.0-rc.0"
-  resolved "https://registry.npmjs.org/@trpc/server/-/server-10.0.0-rc.0.tgz"
-  integrity sha512-rLVnHrhrTM4xBheIfqtH1QojgWRCOSbJRw7wr6SVB3yRjCCsU+AZnSrhchMLuDW7Q59r+x3rpH3Wd6BlkydWWg==
+"@trpc/server@10.45.4":
+  version "10.45.4"
+  resolved "https://registry.yarnpkg.com/@trpc/server/-/server-10.45.4.tgz#91ca6848cd3dcdd5163e4bc23cd4a4b55874c8a6"
+  integrity sha512-5MuyK5sDuFVGHOT9EMVHgRjP5I5j3RqGymcb5D47UOp8tzn6LH0g1lEgYrAsOZ12vmk1gpxMw/v/y4xHHK/Qdg==
 
 "@types/js-cookie@^2.2.6":
   version "2.2.7"
@@ -2029,11 +2027,6 @@ react-popper@^2.2.5:
   dependencies:
     react-fast-compare "^3.0.1"
     warning "^4.0.2"
-
-react-ssr-prepass@^1.5.0:
-  version "1.5.0"
-  resolved "https://registry.npmjs.org/react-ssr-prepass/-/react-ssr-prepass-1.5.0.tgz"
-  integrity sha512-yFNHrlVEReVYKsLI5lF05tZoHveA5pGzjFbFJY/3pOqqjGOmMmqx83N4hIjN2n6E1AOa+eQEUxs3CgRnPmT0RQ==
 
 react-universal-interface@^0.6.2:
   version "0.6.2"
